@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sourabhsoni.hashtags"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+		<provider
+            android:name="com.sourabhsoni.hashtags.TagProvider"
+            android:authorities="com.sourabhsoni.hashtags.tagdetailsactivity" />
+        <activity
+            android:name="com.sourabhsoni.hashtags.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".TagDetailsActivity"
+            android:label = "@string/app_name">
+            <intent-filter >
+            <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.cc.tag" />
+               </intent-filter> 
+        </activity>
+    </application>
+
+</manifest>
