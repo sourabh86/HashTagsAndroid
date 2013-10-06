@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 public class TagDetailsActivity extends Activity {
 	
+	//List to store messages that contain clicked Tag.
 	private ArrayList<String> messagesWithTag;
 	
 	@Override
@@ -20,10 +21,13 @@ public class TagDetailsActivity extends Activity {
         messagesWithTag=new ArrayList<String>();
         ListView messagesListView=(ListView)findViewById(R.id.messagesWithTag);
         
+        //Get the content URI
         Uri uri = getIntent().getData();
+        //strip off hashtag from the URI
         String tag=uri.toString().split("/")[3];
         
-        //TODO use tag
+        //Iterate through all the messages and find the ones
+        //which contain this hashtag.
         for(String message:MainActivity.messagesList)
         {
         	if(message.contains(tag))
@@ -32,6 +36,7 @@ public class TagDetailsActivity extends Activity {
         	}
         }
         
+        //Show the list of messages which has the hashtag
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messagesWithTag);
         messagesListView.setAdapter(adapter);
         
